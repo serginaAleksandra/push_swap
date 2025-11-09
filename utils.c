@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/09 15:12:35 by asergina          #+#    #+#             */
+/*   Updated: 2025/11/09 20:45:19 by aleksandra       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	exit_with_error()
@@ -6,7 +18,40 @@ void	exit_with_error()
 	exit(EXIT_FAILURE);
 }
 
-long atoi_long(const char *nptr)
+void	param_processing(t_list **a, char **param)
+{
+	int	*content;
+	int	i;
+
+	i = 1;
+	content = malloc(sizeof(*content));
+	if (!content)
+		exit_with_error();
+	*content = atoi_long(param[i]);
+	*a = ft_lstnew((void *)content);
+	if (!(*a))
+		exit_with_error();
+	while (param[++i])
+	{
+		content = malloc(sizeof(*content));
+		if (!content)
+			exit_with_error();
+		*content = atoi_long(param[i]);
+		ft_lstadd_back(a, ft_lstnew((void *)content)); // if error inside add_back
+	}
+}
+
+void	lstprint(t_list *lst)
+{
+
+	while (lst != NULL)
+	{
+		ft_printf("%d\n", *(int *)lst->content);
+		lst = lst->next;
+	}
+}
+
+long	atoi_long(const char *nptr)
 {
 	int		sign;
 	long	result;
@@ -14,12 +59,12 @@ long atoi_long(const char *nptr)
 
 	if (ft_strlen(nptr) > 11)
 		exit_with_error();
-	i = 0;
-	while (nptr[i])
+	i = -1;
+	while (nptr[++i])
 	{
-		if ((nptr[i] < '0' && nptr[i] != '+' && nptr[i] != '-') || nptr[i] > '9')
+		if ((nptr[i] < '0' && nptr[i] != '+' && nptr[i] != '-') || nptr[i] > '9' ||
+				((nptr[i] == '-' || nptr[i] == '+') && (i != 0 || !nptr[i + 1])))
 			exit_with_error();
-		i++;
 	}
 	i = 0;
 	sign = 1;
@@ -31,10 +76,7 @@ long atoi_long(const char *nptr)
 		i++;
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
-	}
+		result = result * 10 + (nptr[i++] - '0');
 	result *= sign;
 	if (result > INT_MAX || result < INT_MIN)
 		exit_with_error();

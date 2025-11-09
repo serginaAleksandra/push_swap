@@ -1,43 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/09 15:12:43 by asergina          #+#    #+#             */
+/*   Updated: 2025/11/09 20:46:05 by aleksandra       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-void	ft_lstprint(t_list *lst)
-{
-
-	while (lst != NULL)
-	{
-		ft_printf("%d\n", *(int *)lst->content);
-		lst = lst->next;
-	}
-}
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_list	*a;
-	//t_list	*b;
-	int		*content;
+	t_list	*b;
 
 	a = NULL;
-	//b = NULL;
+	b = NULL;
 	if (argc > 1)
 	{
-		i = 1;
-		content = malloc(sizeof(*content));
-		if (!content)
-			return (1);
-		*content = atoi_long(argv[i]);
-		a = ft_lstnew((void *)content);
-		while (argv[++i])
-		{
-			content = malloc(sizeof(*content));
-			if (!content)
-				return (1);
-			*content = atoi_long(argv[i]);
-			ft_lstadd_back(&a, ft_lstnew((void *)content));
-		}
-		ft_lstprint(a);
+		param_processing(&a, argv);
+		swap_a(&a);
+		push_b(&a, &b);
+		ft_printf("stack a\n");
+		lstprint(a);
+		ft_printf("stack b\n");
+		lstprint(b);
 	}
-	else
-
 	return (0);
 }
