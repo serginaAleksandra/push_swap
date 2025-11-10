@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 20:38:46 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/09 20:39:20 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/10 20:00:44 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,12 @@ void	swap_b(t_list **b);
 void	ss(t_list **a, t_list **b);
 void	push_a(t_list **a, t_list **b);
 void	push_b(t_list **a, t_list **b);
+void	rotate_a(t_list **a);
+void	rotate_b(t_list **b);
+void	rr(t_list **a, t_list **b);
+void	lstremove_last(t_list *lst);
+void	reverse_rotate_a(t_list **a);
+void	reverse_rotate_b(t_list **b);
+void	rrr(t_list **a, t_list **b);
 
 #endif
