@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:12:35 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/09 20:45:19 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/10 20:25:30 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	param_processing(t_list **a, char **param)
 		if (!content)
 			exit_with_error();
 		*content = atoi_long(param[i]);
-		ft_lstadd_back(a, ft_lstnew((void *)content)); // if error inside add_back
+		ft_lstadd_back(a, ft_lstnew((void *)content)); // if error inside lstnew
 	}
 }
 

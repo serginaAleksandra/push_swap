@@ -4,7 +4,7 @@ LIBFT_DIR = libft_printf
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(LIBFT_DIR) -I.
-SRC = main.c utils.c rules_ss_push.c rules_rr.c rules_rrr.c
+SRC = main.c utils.c rules_ss_push.c rules_rr.c rules_rrr.c sort.c
 LIB = $(LIBFT_DIR)/libft.a
 
 all: $(LIB) $(NAME)
