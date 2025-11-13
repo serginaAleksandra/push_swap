@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:12:43 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/12 20:22:48 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/13 20:24:38 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		param_processing(&a, argv);
+		if (argc == 3)
+			sort_two(&a);
 		if (argc == 4)
-			sort_three(&a);
+			sort_three(&a, &b);
+		if (argc == 5)
+			sort_four(&a, &b);
+		if (argc == 6)
+			sort_five(&a, &b);
 		ft_printf("stack a\n");
 		lstprint(a);
 		ft_printf("stack b\n");

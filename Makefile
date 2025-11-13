@@ -1,11 +1,14 @@
 # Minimal Makefile for project root
 NAME = push_swap
+
 LIBFT_DIR = libft_printf
+LIB = $(LIBFT_DIR)/libft.a
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+
+SRC = main.c param_proc.c utils.c rules_ss_push.c rules_rr.c rules_rrr.c sort.c
 INCLUDES = -I$(LIBFT_DIR) -I.
-SRC = main.c utils.c rules_ss_push.c rules_rr.c rules_rrr.c sort.c
-LIB = $(LIBFT_DIR)/libft.a
 
 all: $(LIB) $(NAME)
 
