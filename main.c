@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:12:43 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/13 20:24:38 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/14 16:42:05 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (argc > 1)
 	{
-		param_processing(&a, argv);
+		param_processing(&a, &b, argv);
 		if (argc == 3)
 			sort_two(&a);
 		if (argc == 4)
