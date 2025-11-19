@@ -1,9 +1,8 @@
 #include "push_swap.h"
 
-static void	is_digit(const char *nptr, t_list **a, t_list **b);
-static void	is_repeat(t_list **a, t_list **b);
+static void	is_digit(const char *nptr, t_stack **a, t_stack **b);
 
-static long	atoi_long(const char *nptr, t_list	**a, t_list **b)
+static long	atoi_long(const char *nptr, t_stack	**a, t_stack **b)
 {
 	int		sign;
 	long	result;
@@ -19,6 +18,10 @@ static long	atoi_long(const char *nptr, t_list	**a, t_list **b)
 			sign = -1;
 		i++;
 	}
+	while (nptr[i] == '0')
+		i++;
+	if (ft_strlen(&nptr[i]) > 10)
+		exit_with_error(a, b);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		result = result * 10 + (nptr[i++] - '0');
 	result *= sign;
@@ -27,35 +30,7 @@ static long	atoi_long(const char *nptr, t_list	**a, t_list **b)
 	return (result);
 }
 
-void	param_processing(t_list **a, t_list **b, char **param)
-{
-	int	*content;
-	int	i;
-
-	i = 1;
-	if (ft_strlen(param[i]) > 11)
-		exit_with_error(a, b);
-	content = malloc(sizeof(*content));
-	if (!content)
-		exit_with_error(a, b);
-	*content = atoi_long(param[i], a, b);
-	*a = ft_lstnew((void *)content);
-	if (!(*a))
-		exit_with_error(a, b);
-	while (param[++i])
-	{
-		if (ft_strlen(param[i]) > 11)
-			exit_with_error(a, b);
-		content = malloc(sizeof(*content));
-		if (!content)
-			exit_with_error(a, b);
-		*content = atoi_long(param[i], a, b);
-		ft_lstadd_back(a, ft_lstnew((void *)content)); // if error inside lstnew
-	}
-	is_repeat(a, b);
-}
-
-static void	is_digit(const char *nptr, t_list **a, t_list **b)
+static void	is_digit(const char *nptr, t_stack **a, t_stack **b)
 {
 	int		i;
 
@@ -69,21 +44,38 @@ static void	is_digit(const char *nptr, t_list **a, t_list **b)
 	}
 }
 
-static void	is_repeat(t_list **a, t_list **b)
+void	param_processing(t_stack **a, t_stack **b, char **param, int argc)
 {
-	t_list	*stack_a;
-	t_list	*a_next;
+	int	number;
 
-	stack_a = (*a);
-	while (stack_a)
+	argc--;
+	while (argc > 0)
 	{
-		a_next = stack_a->next;
-		while (a_next)
-		{
-			if (*(int *)stack_a->content == *(int *)a_next->content)
-				exit_with_error(a, b);
-			a_next = a_next->next;
-		}
-		stack_a = stack_a->next;
+		if (ft_strlen(param[argc]) == 0 )
+			exit_with_error(a, b);
+		number = atoi_long(param[argc], a, b);
+		push_node(a, b, number);
+		argc--;
 	}
+
+	// number = malloc(sizeof(*number));
+	// if (!number)
+	// 	exit_with_error(a, b);
+	// *number = atoi_long(param[i], a, b);
+	// *a = ft_lstnew((void *)number);
+	// if (!(*a))
+	// 	exit_with_error(a, b);
+	// while (param[++i])
+	// {
+	// 	if (ft_strlen(param[i]) > 11)
+	// 		exit_with_error(a, b);
+	// 	number = malloc(sizeof(*number));
+	// 	if (!number)
+	// 		exit_with_error(a, b);
+	// 	*number = atoi_long(param[i], a, b);
+	// 	ft_lstadd_back(a, ft_lstnew((void *)number)); // if error inside lstnew
+	// }
+	// is_repeat(a, b);
 }
+
+

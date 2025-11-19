@@ -7,7 +7,7 @@ LIB = $(LIBFT_DIR)/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.c param_proc.c utils.c rules_ss_push.c rules_rr.c rules_rrr.c sort.c
+SRC = main.c param_proc.c utils.c lst_utils.c rules_ss_push.c rules_rr.c rules_rrr.c sort.c 
 INCLUDES = -I$(LIBFT_DIR) -I.
 
 all: $(LIB) $(NAME)
