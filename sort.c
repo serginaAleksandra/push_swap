@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 17:42:26 by aleksandra        #+#    #+#             */
-/*   Updated: 2025/11/19 18:30:16 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/19 20:48:10 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	sort_five(t_stack **a, t_stack **b)
 		two++;
 	}
 	sort_three(a);
+	push_a(a, b);
 	push_a(a, b);
 }
 
