@@ -1,6 +1,11 @@
 #include "push_swap.h"
 
 static void	is_digit(const char *nptr, t_stack **a, t_stack **b);
+static void	process_argument(char *arg, t_stack **a, t_stack **b);
+static char	**split_argument(char *arg, t_stack **a, t_stack **b);
+static void	push_tokens(char **split, t_stack **a, t_stack **b);
+static void	free_split(char **split);
+static void	split_error(char **split, t_stack **a, t_stack **b);
 
 static long	atoi_long(const char *nptr, t_stack	**a, t_stack **b)
 {
@@ -46,37 +51,80 @@ static void	is_digit(const char *nptr, t_stack **a, t_stack **b)
 
 void	param_processing(t_stack **a, t_stack **b, char **param, int argc)
 {
-	int	number;
-
 	argc--;
 	while (argc > 0)
 	{
-		if (ft_strlen(param[argc]) == 0 )
-			exit_with_error(a, b);
-		number = atoi_long(param[argc], a, b);
-		push_node(a, b, number);
+		process_argument(param[argc], a, b);
 		argc--;
 	}
 	assign_indexes(a, b);
+}
 
-	// number = malloc(sizeof(*number));
-	// if (!number)
-	// 	exit_with_error(a, b);
-	// *number = atoi_long(param[i], a, b);
-	// *a = ft_lstnew((void *)number);
-	// if (!(*a))
-	// 	exit_with_error(a, b);
-	// while (param[++i])
-	// {
-	// 	if (ft_strlen(param[i]) > 11)
-	// 		exit_with_error(a, b);
-	// 	number = malloc(sizeof(*number));
-	// 	if (!number)
-	// 		exit_with_error(a, b);
-	// 	*number = atoi_long(param[i], a, b);
-	// 	ft_lstadd_back(a, ft_lstnew((void *)number)); // if error inside lstnew
-	// }
-	// is_repeat(a, b);
+static void	process_argument(char *arg, t_stack **a, t_stack **b)
+{
+	char	**split;
+
+	split = split_argument(arg, a, b);
+	push_tokens(split, a, b);
+	free_split(split);
+}
+
+static char	**split_argument(char *arg, t_stack **a, t_stack **b)
+{
+	char	**split;
+	int		count;
+
+	if (!arg || *arg == '\0')
+		exit_with_error(a, b);
+	split = ft_split(arg, ' ');
+	if (!split)
+		exit_with_error(a, b);
+	count = 0;
+	while (split[count])
+		count++;
+	if (count == 0)
+		split_error(split, a, b);
+	return (split);
+}
+
+static void	push_tokens(char **split, t_stack **a, t_stack **b)
+{
+	int	idx;
+	long	number;
+
+	idx = 0;
+	while (split[idx])
+		idx++;
+	idx--;
+	while (idx >= 0)
+	{
+		if (ft_strlen(split[idx]) == 0)
+			split_error(split, a, b);
+		number = atoi_long(split[idx], a, b);
+		push_node(a, b, (int)number);
+		idx--;
+	}
+}
+
+static void	free_split(char **split)
+{
+	int	idx;
+
+	if (!split)
+		return ;
+	idx = 0;
+	while (split[idx])
+	{
+		free(split[idx]);
+		idx++;
+	}
+	free(split);
+}
+
+static void	split_error(char **split, t_stack **a, t_stack **b)
+{
+	free_split(split);
+	exit_with_error(a, b);
 }
 
 
