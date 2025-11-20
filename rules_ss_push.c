@@ -12,60 +12,71 @@
 
 #include "push_swap.h"
 
+static int	swap_nodes(t_stack **stack);
+static int	push_node_to(t_stack **from, t_stack **to);
+
 void	swap_a(t_stack **a)
 {
-	t_stack	*first;
-	t_stack	*second;
-	int		tmp;
-
-	if (!a || !*a || !(*a)->next)
-		return ;
-	first = *a;
-	second = first->next;
-	tmp = first->value;
-	first->value = second->value;
-	second->value = tmp;
+	if (swap_nodes(a))
+		write(1, "sa\n", 3);
 }
 
 void	swap_b(t_stack **b)
 {
-	t_stack	*first;
-	t_stack	*second;
-	int		tmp;
-
-	if (!b || !*b || !(*b)->next)
-		return ;
-	first = *b;
-	second = first->next;
-	tmp = first->value;
-	first->value = second->value;
-	second->value = tmp;
+	if (swap_nodes(b))
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
-	swap_a(a);
-	swap_b(b);
+	int	performed;
+
+	performed = 0;
+	performed += swap_nodes(a);
+	performed += swap_nodes(b);
+	if (performed)
+		write(1, "ss\n", 3);
 }
 
 void	push_a(t_stack **a, t_stack **b)
 {
-	t_stack	*first_b;
-
-	if (!b || !*b)
-		return ;
-	first_b = *b;
-	*b = first_b->next;
-	lstadd_front(a, first_b);
+	if (push_node_to(b, a))
+		write(1, "pa\n", 3);
 }
 
 void	push_b(t_stack **a, t_stack **b)
 {
-	t_stack	*first_a;
+	if (push_node_to(a, b))
+		write(1, "pb\n", 3);
+}
 
-	if (!a || !*a)
-		return ;
-	first_a = *a;
-	*a = first_a->next;
-	lstadd_front(b, first_a);
+static int	swap_nodes(t_stack **stack)
+{
+	t_stack	*first;
+	t_stack	*second;
+	int		tmp;
+
+	if (!stack || !*stack || !(*stack)->next)
+		return (0);
+	first = *stack;
+	second = first->next;
+	tmp = first->value;
+	first->value = second->value;
+	second->value = tmp;
+	tmp = first->index;
+	first->index = second->index;
+	second->index = tmp;
+	return (1);
+}
+
+static int	push_node_to(t_stack **from, t_stack **to)
+{
+	t_stack	*first;
+
+	if (!from || !*from)
+		return (0);
+	first = *from;
+	*from = first->next;
+	lstadd_front(to, first);
+	return (1);
 }

@@ -57,6 +57,7 @@ void	param_processing(t_stack **a, t_stack **b, char **param, int argc)
 		push_node(a, b, number);
 		argc--;
 	}
+	assign_indexes(a, b);
 
 	// number = malloc(sizeof(*number));
 	// if (!number)

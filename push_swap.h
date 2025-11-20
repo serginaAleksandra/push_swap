@@ -19,9 +19,10 @@
 # include <stdlib.h>
 # include <limits.h>
 
-typedef struct	s_stack
+typedef struct s_stack
 {
-	int				value;
+	int			value;
+	int			index;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -51,5 +52,8 @@ void	sort_three(t_stack **a);
 void	sort_four(t_stack **a, t_stack **b);
 void	sort_five(t_stack **a, t_stack **b);
 int		lstsize(t_stack *lst);
+int		stack_is_sorted(t_stack *a);
+void	assign_indexes(t_stack **a, t_stack **b);
+void	radix_sort(t_stack **a, t_stack **b);
 
 #endif

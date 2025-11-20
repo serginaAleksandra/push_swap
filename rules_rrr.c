@@ -12,32 +12,41 @@
 
 #include "push_swap.h"
 
+static int	reverse_rotate_stack(t_stack **stack);
+
 void	reverse_rotate_a(t_stack **a)
 {
-	t_stack	*old_last;
-
-	if (!a || !*a || !(*a)->next)
-		return ;
-	old_last = lstlast(*a);
-	lstremove_last(*a);
-	lstadd_front(a, old_last);
+	if (reverse_rotate_stack(a))
+		write(1, "rra\n", 4);
 }
 
 void	reverse_rotate_b(t_stack **b)
 {
-	t_stack	*old_last;
-
-	if (!b || !*b || !(*b)->next)
-		return ;
-	old_last = lstlast(*b);
-	lstremove_last(*b);
-	lstadd_front(b, old_last);
+	if (reverse_rotate_stack(b))
+		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
-	reverse_rotate_a(a);
-	reverse_rotate_b(b);
+	int	rotated;
+
+	rotated = 0;
+	rotated += reverse_rotate_stack(a);
+	rotated += reverse_rotate_stack(b);
+	if (rotated)
+		write(1, "rrr\n", 4);
+}
+
+static int	reverse_rotate_stack(t_stack **stack)
+{
+	t_stack	*old_last;
+
+	if (!stack || !*stack || !(*stack)->next)
+		return (0);
+	old_last = lstlast(*stack);
+	lstremove_last(*stack);
+	lstadd_front(stack, old_last);
+	return (1);
 }
 
 void	lstremove_last(t_stack *lst)
