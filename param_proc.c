@@ -37,8 +37,10 @@ static void	is_digit(const char *nptr, t_stack **a, t_stack **b)
 	i = 0;
 	while (nptr[i])
 	{
-		if ((nptr[i] < '0' && nptr[i] != '+' && nptr[i] != '-') || nptr[i] > '9' ||
-				((nptr[i] == '-' || nptr[i] == '+') && (i != 0 || !nptr[i + 1])))
+		if ((nptr[i] < '0' && nptr[i] != '+' && nptr[i] != '-')
+			|| nptr[i] > '9'
+			|| ((nptr[i] == '-' || nptr[i] == '+')
+				&& (i != 0 || !nptr[i + 1])))
 			exit_with_error(a, b);
 		i++;
 	}
@@ -54,4 +56,3 @@ void	param_processing(t_stack **a, t_stack **b, char **param, int argc)
 	}
 	assign_indexes(a, b);
 }
-

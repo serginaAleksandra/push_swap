@@ -2,11 +2,27 @@
 
 static int	get_max_bits(t_stack *stack);
 
+static void	loop_in_loop(t_stack **a, t_stack **b, int size, int *bit)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (((*a)->index >> *bit) & 1)
+			rotate_a(a);
+		else
+			push_b(a, b);
+		i++;
+	}
+	while (*b)
+		push_a(a, b);
+}
+
 void	radix_sort(t_stack **a, t_stack **b)
 {
 	int	size;
 	int	bit;
-	int	i;
 	int	max_bits;
 
 	if (!a || !*a)
@@ -16,17 +32,7 @@ void	radix_sort(t_stack **a, t_stack **b)
 	bit = 0;
 	while (bit < max_bits)
 	{
-		i = 0;
-		while (i < size)
-		{
-			if (((*a)->index >> bit) & 1)
-				rotate_a(a);
-			else
-				push_b(a, b);
-			i++;
-		}
-		while (*b)
-			push_a(a, b);
+		loop_in_loop(a, b, size, &bit);
 		if (stack_is_sorted(*a))
 			return ;
 		bit++;

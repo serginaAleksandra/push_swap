@@ -3,52 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 17:42:26 by aleksandra        #+#    #+#             */
-/*   Updated: 2025/11/19 20:48:10 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 05:47:15 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	the_smallest(t_stack **a, t_stack **b);
-
-void	sort_two(t_stack **a)
+void	sort_two(t_stack **a, t_stack **b)
 {
 	int	first;
 	int	second;
 
 	if (!a || !*a || !(*a)->next)
-		return ;
+		exit_with_error(a, b);
 	first = (*a)->value;
 	second = (*a)->next->value;
 	if (first > second)
 		swap_a(a);
 }
 
-// void	sort_three(t_stack **a, t_stack **b)
-// {
-// 	int	smallest;
+static void	first_third(int first, int second, int third, t_stack **a)
+{
+	if (first > third)
+	{
+		rotate_a(a);
+		if (second > third)
+			swap_a(a);
+	}
+	else
+		swap_a(a);
+	return ;
+}
 
-// 	if (!a || !*a)
-//         return ; // or exit_with_error();
-// 	smallest = the_smallest(a, b);
-// 	while ((*a)->value != smallest)
-// 		rotate_a(a);
-// 	push_b(a, b);
-// 	sort_two(a);
-// 	push_a(a, b);
-// }
-
-void	sort_three(t_stack **a)
+void	sort_three(t_stack **a, t_stack **b)
 {
 	int	first;
 	int	second;
 	int	third;
 
 	if (!a || !*a || !(*a)->next || !(*a)->next->next)
-		return ;
+		exit_with_error(a, b);
 	first = (*a)->value;
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
@@ -63,14 +60,7 @@ void	sort_three(t_stack **a)
 	}
 	else
 	{
-		if (first > third)
-		{
-			rotate_a(a);
-			if (second > third)
-				swap_a(a);
-		}
-		else
-			swap_a(a);
+		first_third(first, second, third, a);
 		return ;
 	}
 }
@@ -80,12 +70,12 @@ void	sort_four(t_stack **a, t_stack **b)
 	int	smallest;
 
 	if (!a || !*a || lstsize(*a) < 4)
-        return ; // or exit_with_error();
+		exit_with_error(a, b);
 	smallest = the_smallest(a, b);
 	while ((*a)->value != smallest)
 		rotate_a(a);
 	push_b(a, b);
-	sort_three(a);
+	sort_three(a, b);
 	push_a(a, b);
 }
 
@@ -95,7 +85,7 @@ void	sort_five(t_stack **a, t_stack **b)
 	int	two;
 
 	if (!a || !*a || lstsize(*a) < 5)
-        return ; // or exit_with_error();
+		exit_with_error(a, b);
 	two = 0;
 	while (two < 2)
 	{
@@ -105,26 +95,7 @@ void	sort_five(t_stack **a, t_stack **b)
 		push_b(a, b);
 		two++;
 	}
-	sort_three(a);
+	sort_three(a, b);
 	push_a(a, b);
 	push_a(a, b);
-}
-
-static int	the_smallest(t_stack **a, t_stack **b)
-{
-	int	smallest;
-	t_stack *stack_a;
-
-	stack_a = *a;
-	if (!stack_a)
-		exit_with_error(a, b);
-	smallest = stack_a->value;
-	stack_a = stack_a->next;
-	while (stack_a)
-	{
-		if (smallest > stack_a->value)
-			smallest = stack_a->value;
-		stack_a = stack_a->next;
-	}
-	return (smallest);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:12:43 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/20 05:13:47 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 05:40:32 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,21 @@ int	stack_is_sorted(t_stack *a)
 	return (1);
 }
 
+static void	print_stack(t_stack *stack)
+{
+	while (stack != NULL)
+	{
+		ft_printf("%d\n", stack->value);
+		stack = stack->next;
+	}
+}
+
 static void	sorting(t_stack **a, t_stack **b, int size)
 {
 	if (size == 2)
-		sort_two(a);
+		sort_two(a, b);
 	else if (size == 3)
-		sort_three(a);
+		sort_three(a, b);
 	else if (size == 4)
 		sort_four(a, b);
 	else if (size == 5)

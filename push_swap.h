@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 20:38:46 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/20 05:04:04 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 06:08:11 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "libft_printf/libft.h"
 # include <stdio.h>
@@ -21,14 +21,13 @@
 
 typedef struct s_stack
 {
-	int			value;
-	int			index;
+	int				value;
+	int				index;
 	struct s_stack	*next;
 }				t_stack;
 
-
 void	exit_with_error(t_stack	**a, t_stack **b);
-void	print_stack(t_stack *lst);
+//void	print_stack(t_stack *lst);
 void	free_stack(t_stack **stack);
 void	push_node(t_stack **a, t_stack **b, int value);
 void	param_processing(t_stack **a, t_stack **b, char **param, int argc);
@@ -48,8 +47,9 @@ void	lstremove_last(t_stack *lst); // r
 void	reverse_rotate_a(t_stack **a);
 void	reverse_rotate_b(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
-void	sort_two(t_stack **a);
-void	sort_three(t_stack **a);
+int		the_smallest(t_stack **a, t_stack **b);
+void	sort_two(t_stack **a, t_stack **b);
+void	sort_three(t_stack **a, t_stack **b);
 void	sort_four(t_stack **a, t_stack **b);
 void	sort_five(t_stack **a, t_stack **b);
 int		lstsize(t_stack *lst);
@@ -57,5 +57,7 @@ void	process_argument(char *arg, t_stack **a, t_stack **b);
 void	assign_indexes(t_stack **a, t_stack **b);
 void	radix_sort(t_stack **a, t_stack **b);
 int		stack_is_sorted(t_stack *a);
+int		swap_nodes(t_stack **stack);
+int		push_node_to(t_stack **from, t_stack **to);
 
 #endif

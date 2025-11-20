@@ -3,26 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:12:35 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/20 05:14:27 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 06:05:51 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	is_repeat(t_stack **a, t_stack **b, int number);
 static t_stack	*init_node(t_stack **a, t_stack **b, int number);
-
-void	print_stack(t_stack *stack)
-{
-	while (stack != NULL)
-	{
-		ft_printf("%d\n", stack->value);
-		stack = stack->next;
-	}
-}
+static void		is_repeat(t_stack **a, t_stack **b, int number);
 
 void	free_stack(t_stack **stack)
 {
@@ -74,4 +65,23 @@ static void	is_repeat(t_stack **a, t_stack **b, int number)
 			exit_with_error(a, b);
 		stack_a = stack_a->next;
 	}
+}
+
+int	the_smallest(t_stack **a, t_stack **b)
+{
+	int		smallest;
+	t_stack	*stack_a;
+
+	stack_a = *a;
+	if (!stack_a)
+		exit_with_error(a, b);
+	smallest = stack_a->value;
+	stack_a = stack_a->next;
+	while (stack_a)
+	{
+		if (smallest > stack_a->value)
+			smallest = stack_a->value;
+		stack_a = stack_a->next;
+	}
+	return (smallest);
 }

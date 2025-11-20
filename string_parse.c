@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_parse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 01:57:41 by aleksandra        #+#    #+#             */
-/*   Updated: 2025/11/20 02:08:18 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 06:04:32 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,3 @@ static void	split_error(char **split, t_stack **a, t_stack **b)
 	free_split(split);
 	exit_with_error(a, b);
 }
-
-
