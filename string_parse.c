@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_parse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 01:57:41 by aleksandra        #+#    #+#             */
-/*   Updated: 2025/11/20 06:04:32 by asergina         ###   ########.fr       */
+/*   Created: 2025/11/20 06:33:15 by asergina          #+#    #+#             */
+/*   Updated: 2025/11/20 06:33:20 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

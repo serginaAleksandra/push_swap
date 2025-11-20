@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   idx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 02:31:07 by aleksandra        #+#    #+#             */
-/*   Updated: 2025/11/20 02:33:16 by aleksandra       ###   ########.fr       */
+/*   Created: 2025/11/20 06:25:47 by asergina          #+#    #+#             */
+/*   Updated: 2025/11/20 06:26:16 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

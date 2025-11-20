@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/20 06:34:23 by asergina          #+#    #+#             */
+/*   Updated: 2025/11/20 06:35:52 by asergina         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	get_max_bits(t_stack *stack);
 
 static void	loop_in_loop(t_stack **a, t_stack **b, int size, int *bit)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)

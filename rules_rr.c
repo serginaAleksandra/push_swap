@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules_rr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
+/*   By: asergina <asergina@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/09 18:43:16 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/19 17:22:46 by aleksandra       ###   ########.fr       */
+/*   Created: 2025/11/20 06:29:41 by asergina          #+#    #+#             */
+/*   Updated: 2025/11/20 06:29:48 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

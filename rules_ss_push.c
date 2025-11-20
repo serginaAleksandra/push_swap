@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asergina <asergina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/09 18:43:16 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/20 06:08:30 by asergina         ###   ########.fr       */
+/*   Created: 2025/11/20 06:30:34 by asergina          #+#    #+#             */
+/*   Updated: 2025/11/20 06:36:36 by asergina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	swap_a(t_stack **a)
 {
