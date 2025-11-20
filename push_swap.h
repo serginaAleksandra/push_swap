@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 20:38:46 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/19 18:49:36 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 02:33:42 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	print_stack(t_stack *lst);
 void	free_stack(t_stack **stack);
 void	push_node(t_stack **a, t_stack **b, int value);
 void	param_processing(t_stack **a, t_stack **b, char **param, int argc);
+long	atoi_long(const char *nptr, t_stack	**a, t_stack **b);
 t_stack	*lstlast(t_stack *lst);
 void	lstadd_front(t_stack **lst, t_stack *new);
 void	lstadd_back(t_stack **lst, t_stack *new);
@@ -43,7 +44,7 @@ void	push_b(t_stack **a, t_stack **b);
 void	rotate_a(t_stack **a);
 void	rotate_b(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
-void	lstremove_last(t_stack *lst);
+void	lstremove_last(t_stack *lst); // r
 void	reverse_rotate_a(t_stack **a);
 void	reverse_rotate_b(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
@@ -52,8 +53,8 @@ void	sort_three(t_stack **a);
 void	sort_four(t_stack **a, t_stack **b);
 void	sort_five(t_stack **a, t_stack **b);
 int		lstsize(t_stack *lst);
-int		stack_is_sorted(t_stack *a);
+void	process_argument(char *arg, t_stack **a, t_stack **b);
 void	assign_indexes(t_stack **a, t_stack **b);
-void	radix_sort(t_stack **a, t_stack **b);
+void	radix_sort(t_stack **a, t_stack **b); // r
 
 #endif
