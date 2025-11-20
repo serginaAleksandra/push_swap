@@ -27,6 +27,8 @@ void	radix_sort(t_stack **a, t_stack **b)
 		}
 		while (*b)
 			push_a(a, b);
+		if (stack_is_sorted(*a))
+			return ;
 		bit++;
 	}
 }

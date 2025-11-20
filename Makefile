@@ -8,7 +8,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c param_proc.c utils.c lst_utils.c rules_ss_push.c \
-	rules_rr.c rules_rrr.c sort.c radix_sort.c string_parse.c
+	rules_rr.c rules_rrr.c sort.c radix_sort.c string_parse.c \
+	idx_utils.c
 INCLUDES = -I$(LIBFT_DIR) -I.
 
 all: $(LIB) $(NAME)

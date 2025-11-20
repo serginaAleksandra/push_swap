@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:12:43 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/20 02:36:35 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 05:13:47 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	exit_with_error(t_stack	**a, t_stack **b)
 	exit(EXIT_FAILURE);
 }
 
-static int	stack_is_sorted(t_stack *a)
+int	stack_is_sorted(t_stack *a)
 {
 	if (!a)
 		return (1);
@@ -64,6 +64,7 @@ int	main(int argc, char **argv)
 		if (!stack_is_sorted(a))
 			sorting(&a, &b, size);
 	}
+	print_stack(a);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 20:38:46 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/20 02:33:42 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 05:04:04 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	sort_five(t_stack **a, t_stack **b);
 int		lstsize(t_stack *lst);
 void	process_argument(char *arg, t_stack **a, t_stack **b);
 void	assign_indexes(t_stack **a, t_stack **b);
-void	radix_sort(t_stack **a, t_stack **b); // r
+void	radix_sort(t_stack **a, t_stack **b);
+int		stack_is_sorted(t_stack *a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aleksandra <aleksandra@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 15:12:35 by asergina          #+#    #+#             */
-/*   Updated: 2025/11/20 02:30:44 by aleksandra       ###   ########.fr       */
+/*   Updated: 2025/11/20 05:14:27 by aleksandra       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 
 static void	is_repeat(t_stack **a, t_stack **b, int number);
 static t_stack	*init_node(t_stack **a, t_stack **b, int number);
-static void	sort_array(int *array, int size);
-static int	find_index(int *array, int size, int value);
-static void	fill_array(int *array, t_stack *stack);
-static void	update_indexes(t_stack *stack, int *array, int size);
 
 void	print_stack(t_stack *stack)
 {
-
 	while (stack != NULL)
 	{
 		ft_printf("%d\n", stack->value);
